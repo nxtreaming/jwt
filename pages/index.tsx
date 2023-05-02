@@ -1,13 +1,34 @@
-import Link from 'next/link'
-import Layout from '../components/Layout'
+import { useState, useEffect } from 'react';
+import { useRouter } from 'next/router';
+import { logout } from '../utils/logout';
 
-const IndexPage = () => (
-  <Layout title="Home | Next.js + TypeScript Example">
-    <h1>Hello Next.js 👋</h1>
-    <p>
-      <Link href="/about">About</Link>
-    </p>
-  </Layout>
-)
+const HomePage = () => {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const router = useRouter();
 
-export default IndexPage
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    setIsLoggedIn(!!token);
+  }, []);
+
+  const handleLogout = () => {
+    logout(router);
+  };
+
+  return (
+    <div>
+      <h1>Home Page</h1>
+      {isLoggedIn ? (
+        <>
+          <p>You are logged in.</p>
+          <button onClick={handleLogout}>Logout</button>
+        </>
+      ) : (
+        <p>You are not logged in.</p>
+      )}
+    </div>
+  );
+};
+
+export default HomePage;
+
