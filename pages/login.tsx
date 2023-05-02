@@ -23,7 +23,7 @@ const LoginPage = () => {
     try {
       const response = await axios.post('/api/auth/login', { username, password });
       localStorage.setItem('token', response.data.token);
-      router.push('/');
+      await router.push('/');
     } catch (error) {
       setErrorMessage('Invalid credentials');
     }
