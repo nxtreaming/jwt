@@ -20,7 +20,7 @@ const HomePage = () => {
     <div>
       <h1>Home Page</h1>
       <nav>
-        <Link href="/protected">protected route</Link> | <Link href="/login">Login</Link>
+        <Link href="/protected">protected route</Link> {isLoggedIn ? "" : (<> | <Link href="/login">Login</Link></>)}
       </nav>
       {isLoggedIn ? (
         <>
