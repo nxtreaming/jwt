@@ -19,7 +19,7 @@ const HomePage = () => {
   };
 
   if (isLoading) {
-    return;
+    return null;
   }
 
   return (
