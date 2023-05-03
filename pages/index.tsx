@@ -5,16 +5,22 @@ import Link from 'next/link'
 
 const HomePage = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const router = useRouter();
 
   useEffect(() => {
     const token = localStorage.getItem('token');
     setIsLoggedIn(!!token);
+    setIsLoading(false);
   }, []);
 
   const handleLogout = () => {
     logout(router);
   };
+
+  if (isLoading) {
+    return;
+  }
 
   return (
     <div>
