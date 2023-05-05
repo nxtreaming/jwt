@@ -14,6 +14,7 @@ const ProtectedPage = () => {
         });
         setData(response.data);
       } catch (err) {
+        localStorage.removeItem('token');
         setError(err.response?.data?.message || err.message);
       }
     };
