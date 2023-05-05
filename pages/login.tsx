@@ -30,7 +30,7 @@ const LoginPage = () => {
   };
 
   if (isLoading) {
-    return null`;
+    return null;
   }
 
   return (
