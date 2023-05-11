@@ -10,7 +10,7 @@ handler.post(async (req: NextApiRequest, res: NextApiResponse) => {
   // Replace with your own authentication logic
   if (username === 'user' && password === 'password') {
     const token = createToken({ username });
-    res.status(200).json({ token });
+    res.status(200).json({ token: token });
   } else {
     res.status(401).json({ message: 'Invalid credentials' });
   }
